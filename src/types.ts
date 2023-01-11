@@ -22,7 +22,7 @@ export type TGetUserById = {
 export type TNewUser = {
   name: string;
   age: number;
-  hobbies: string[];
+  hobbies: string[] | string;
 };
 
 export type TUser = {
