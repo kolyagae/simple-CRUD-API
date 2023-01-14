@@ -1,20 +1,16 @@
 import http from 'node:http';
 
-export type TServer = {
+export type TServerMethod = {
   (
     request: http.IncomingMessage,
-    response: http.ServerResponse<http.IncomingMessage> & {
-      req: http.IncomingMessage;
-    }
+    response: http.ServerResponse<http.IncomingMessage>
   ): void;
 };
 
-export type TGetUserById = {
+export type TServerMethodWithId = {
   (
     request: http.IncomingMessage,
-    response: http.ServerResponse<http.IncomingMessage> & {
-      req: http.IncomingMessage;
-    },
+    response: http.ServerResponse<http.IncomingMessage>,
     id: string
   ): void;
 };

@@ -4,7 +4,7 @@ import {
   TAddIdForNewUser,
   TGetDataNewUser,
   TNewUser,
-  TServer,
+  TServerMethod,
   TUser,
 } from './types.js';
 
@@ -52,7 +52,7 @@ const validateNewUserFields = (dataNewUser: string) => {
   return false;
 };
 
-export const createUser: TServer = async (request, response) => {
+export const createUser: TServerMethod = async (request, response) => {
   try {
     const dataNewUser = await getDataNewUser(request);
     const fields = validateNewUserFields(dataNewUser);
