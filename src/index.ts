@@ -5,6 +5,7 @@ import { createUser } from './create.js';
 import { deleteUser } from './delete.js';
 import { getAllUsers } from './getAll.js';
 import { getUserById } from './getById.js';
+import { updateDataUser } from './update.js';
 
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 4000;
@@ -24,6 +25,13 @@ server.on('request', (request, response) => {
     getUserById(request, response, id);
   } else if (method === 'POST' && url === '/api/users') {
     createUser(request, response);
+  } else if (
+    method === 'PUT' &&
+    url?.startsWith('/api/users') &&
+    url?.split('/').length === 4
+  ) {
+    const id = url.split('/')[3];
+    updateDataUser(request, response, id);
   } else if (
     method === 'DELETE' &&
     url?.startsWith('/api/users') &&

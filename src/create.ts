@@ -1,12 +1,8 @@
 import { users } from './data/users.js';
 import { v4 as uuidv4 } from 'uuid';
-import {
-  TAddIdForNewUser,
-  TGetDataNewUser,
-  TNewUser,
-  TServerMethod,
-  TUser,
-} from './types.js';
+import { TAddIdForNewUser, TNewUser, TServerMethod, TUser } from './types.js';
+import { getRequestBody } from './getRequestBody.js';
+import { validateRequestBody } from './validateRequestBody.js';
 
 const addIdForNewUser: TAddIdForNewUser = (newUser) => {
   return new Promise((resolve) => {
@@ -19,43 +15,10 @@ const addIdForNewUser: TAddIdForNewUser = (newUser) => {
   });
 };
 
-const getDataNewUser: TGetDataNewUser = (request) => {
-  return new Promise((resolve, reject) => {
-    try {
-      let body = '';
-
-      request.on('data', (chunk: string) => {
-        body += chunk.toString();
-      });
-
-      request.on('end', async () => {
-        resolve(body);
-      });
-    } catch (error) {
-      reject(error);
-    }
-  });
-};
-
-const validateNewUserFields = (dataNewUser: string) => {
-  const { name, age, hobbies }: TNewUser = JSON.parse(dataNewUser);
-  const typesMatch: boolean[] = [
-    typeof name === 'string',
-    typeof age === 'number',
-    Array.isArray(hobbies) && hobbies.every((el) => typeof el === 'string'),
-  ];
-  const fieldsFilled = name && age && hobbies;
-
-  if (typesMatch.every((el) => el) && fieldsFilled) {
-    return { name, age, hobbies };
-  }
-  return false;
-};
-
 export const createUser: TServerMethod = async (request, response) => {
   try {
-    const dataNewUser = await getDataNewUser(request);
-    const fields = validateNewUserFields(dataNewUser);
+    const newData = await getRequestBody(request);
+    const fields = validateRequestBody(newData);
 
     if (fields) {
       const { name, age, hobbies } = fields;
@@ -71,7 +34,7 @@ export const createUser: TServerMethod = async (request, response) => {
     } else {
       throw new Error();
     }
-  } catch (error) {
+  } catch {
     response.writeHead(400, { 'Content-Type': 'application/json' });
     response.end(
       JSON.stringify({

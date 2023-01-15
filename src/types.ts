@@ -27,7 +27,7 @@ export type TUser = {
 
 export type TUsers = TUser[];
 
-export type TGetDataNewUser = {
+export type TGetRequestBody = {
   (request: http.IncomingMessage): Promise<string>;
 };
 
