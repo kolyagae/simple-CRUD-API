@@ -1,5 +1,5 @@
-import { TServerMethodWithId } from './types.js';
-import { findUserById } from './findById.js';
+import { TServerMethodWithId } from '../../types.js';
+import { findUserById } from '../findById.js';
 
 export const getUserById: TServerMethodWithId = async (
   _request,

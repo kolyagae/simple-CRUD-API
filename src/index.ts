@@ -1,11 +1,11 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 import http from 'node:http';
-import { createUser } from './create.js';
-import { deleteUser } from './delete.js';
-import { getAllUsers } from './getAll.js';
-import { getUserById } from './getById.js';
-import { updateDataUser } from './update.js';
+import { createUser } from './methods/create/create.js';
+import { deleteUser } from './methods/delete/delete.js';
+import { getAllUsers } from './methods/getAll/getAll.js';
+import { getUserById } from './methods/getById/getById.js';
+import { updateDataUser } from './methods/update/update.js';
 
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 4000;

@@ -1,30 +1,6 @@
-import { IncomingMessage } from 'http';
-import { users } from './data/users.js';
-import { findUserById } from './findById.js';
-import { getRequestBody } from './getRequestBody.js';
-import { TNewUser, TServerMethodWithId, TUser } from './types.js';
-import { validateRequestBody } from './validateRequestBody.js';
-
-const update = async (user: TUser, request: IncomingMessage) => {
-  const data = await getRequestBody(request);
-  return new Promise((resolve, reject) => {
-    const fields = validateRequestBody(data);
-    if (fields) {
-      const { name, age, hobbies } = fields;
-      const updateData: TNewUser = {
-        name,
-        age,
-        hobbies,
-      };
-      const index = users.indexOf(user);
-      const id = user.id;
-      users[index] = { id, ...updateData };
-      resolve(users[index]);
-    } else {
-      reject();
-    }
-  });
-};
+import { findUserById } from '../findById.js';
+import { TServerMethodWithId } from '../../types.js';
+import { update } from './updateInDB.js';
 
 export const updateDataUser: TServerMethodWithId = async (
   request,

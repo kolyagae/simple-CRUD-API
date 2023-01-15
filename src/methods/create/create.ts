@@ -1,19 +1,7 @@
-import { users } from './data/users.js';
-import { v4 as uuidv4 } from 'uuid';
-import { TAddIdForNewUser, TNewUser, TServerMethod, TUser } from './types.js';
-import { getRequestBody } from './getRequestBody.js';
-import { validateRequestBody } from './validateRequestBody.js';
-
-const addIdForNewUser: TAddIdForNewUser = (newUser) => {
-  return new Promise((resolve) => {
-    const user: TUser = {
-      id: uuidv4(),
-      ...newUser,
-    };
-    users.push(user);
-    resolve(user);
-  });
-};
+import { TNewUser, TServerMethod } from '../../types.js';
+import { getRequestBody } from '../getRequestBody.js';
+import { validateRequestBody } from '../validateRequestBody.js';
+import { addIdForNewUser } from './addId.js';
 
 export const createUser: TServerMethod = async (request, response) => {
   try {

@@ -1,11 +1,5 @@
-import { users } from './data/users.js';
-import { TServerMethod, TUsers } from './types.js';
-
-const findAllUsers = (): Promise<TUsers> => {
-  return new Promise((resolve) => {
-    resolve(users);
-  });
-};
+import { TServerMethod } from '../../types.js';
+import { findAllUsers } from './findAll.js';
 
 export const getAllUsers: TServerMethod = async (_request, response) => {
   try {
