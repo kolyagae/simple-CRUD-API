@@ -1,5 +1,5 @@
-import { TUser } from '../../types.js';
-import { users } from '../../data/users.js';
+import { TUser } from '../../types';
+import { users } from '../../data/users';
 
 export const remove = (user: TUser): Promise<void> => {
   return new Promise((resolve) => {

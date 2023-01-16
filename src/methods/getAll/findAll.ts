@@ -1,5 +1,5 @@
-import { users } from '../../data/users.js';
-import { TUsers } from '../../types.js';
+import { users } from '../../data/users';
+import { TUsers } from '../../types';
 
 export const findAllUsers = (): Promise<TUsers> => {
   return new Promise((resolve) => {

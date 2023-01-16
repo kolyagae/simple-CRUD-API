@@ -1,5 +1,5 @@
-import { TServerMethod } from '../../types.js';
-import { findAllUsers } from './findAll.js';
+import { TServerMethod } from '../../types';
+import { findAllUsers } from './findAll';
 
 export const getAllUsers: TServerMethod = async (_request, response) => {
   try {

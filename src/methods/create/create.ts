@@ -1,7 +1,7 @@
-import { TNewUser, TServerMethod } from '../../types.js';
-import { getRequestBody } from '../getRequestBody.js';
-import { validateRequestBody } from '../validateRequestBody.js';
-import { addIdForNewUser } from './addId.js';
+import { TNewUser, TServerMethod } from '../../types';
+import { getRequestBody } from '../getRequestBody';
+import { validateRequestBody } from '../validateRequestBody';
+import { addIdForNewUser } from './addId';
 
 export const createUser: TServerMethod = async (request, response) => {
   try {

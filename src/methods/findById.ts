@@ -1,5 +1,5 @@
-import { users } from '../data/users.js';
-import { TUser } from '../types.js';
+import { users } from '../data/users';
+import { TUser } from '../types';
 import { validate as uuidValidate } from 'uuid';
 
 export const findUserById = (id: string): Promise<TUser | undefined> => {

@@ -1,8 +1,8 @@
 import { IncomingMessage } from 'http';
-import { users } from '../../data/users.js';
-import { getRequestBody } from '../getRequestBody.js';
-import { TNewUser, TUser } from '../../types.js';
-import { validateRequestBody } from '../validateRequestBody.js';
+import { users } from '../../data/users';
+import { getRequestBody } from '../getRequestBody';
+import { TNewUser, TUser } from '../../types';
+import { validateRequestBody } from '../validateRequestBody';
 
 export const update = async (user: TUser, request: IncomingMessage) => {
   const data = await getRequestBody(request);

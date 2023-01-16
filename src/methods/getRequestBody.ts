@@ -1,4 +1,4 @@
-import { TGetRequestBody } from '../types.js';
+import { TGetRequestBody } from '../types';
 
 export const getRequestBody: TGetRequestBody = (request) => {
   return new Promise((resolve, reject) => {

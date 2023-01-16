@@ -1,7 +1,6 @@
-import { users } from '../../data/users.js';
-// import { users } from '../../data/users.json';
+import { users } from '../../data/users';
 import { v4 as uuidv4 } from 'uuid';
-import { TAddIdForNewUser, TUser } from '../../types.js';
+import { TAddIdForNewUser, TUser } from '../../types';
 
 export const addIdForNewUser: TAddIdForNewUser = (newUser) => {
   return new Promise((resolve) => {

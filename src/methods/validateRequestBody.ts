@@ -1,4 +1,4 @@
-import { TNewUser } from '../types.js';
+import { TNewUser } from '../types';
 
 export const validateRequestBody = (dataNewUser: string) => {
   const { name, age, hobbies }: TNewUser = JSON.parse(dataNewUser);

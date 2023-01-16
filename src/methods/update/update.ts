@@ -1,6 +1,6 @@
-import { findUserById } from '../findById.js';
-import { TServerMethodWithId } from '../../types.js';
-import { update } from './updateInDB.js';
+import { findUserById } from '../findById';
+import { TServerMethodWithId } from '../../types';
+import { update } from './updateInDB';
 
 export const updateDataUser: TServerMethodWithId = async (
   request,
@@ -22,13 +22,13 @@ export const updateDataUser: TServerMethodWithId = async (
       response.writeHead(200, { 'Content-Type': 'application/json' });
       response.end(JSON.stringify(updateUser));
     } else {
-      response.writeHead(400, { 'Content-Type': 'application/json' });
+      response.writeHead(404, { 'Content-Type': 'application/json' });
       response.end(
         JSON.stringify({ message: 'Record with this id does not exist' })
       );
     }
   } catch {
-    response.writeHead(404, { 'Content-Type': 'application/json' });
+    response.writeHead(400, { 'Content-Type': 'application/json' });
     response.end(JSON.stringify({ message: 'UserId is invalid (not uuid)' }));
   }
 };
