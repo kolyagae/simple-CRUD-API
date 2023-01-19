@@ -15,13 +15,13 @@ Get all users -> GET http://127.0.0.1:4000/api/users
 
 Create new user -> POST http://127.0.0.1:4000/api/users + body raw JSON (all areas required)
 
-{ "username": "string", "age": number, "hobbies": [] || [string] }
+{ "name": "string", "age": number, "hobbies": [] || [string] }
 
 Get user by id -> GET http://127.0.0.1:4000/api/users/${id}
 
 Update user -> PUT http://127.0.0.1:4000/api/users/${id} + body raw JSON (all areas required)
 
-{ "username": "new name", "age": number, "hobbies": [new data] }
+{ "name": "new name", "age": number, "hobbies": [new data] }
 
 Delete user -> DELETE http://127.0.0.1:4000/api/users/${id}
 
